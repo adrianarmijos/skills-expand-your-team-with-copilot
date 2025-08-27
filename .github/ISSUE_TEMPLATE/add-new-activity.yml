@@ -1,0 +1,124 @@
+name: Add New Activity/Club
+description: Request to add a new extracurricular activity or club to the system
+title: "[NEW ACTIVITY] Add [Activity Name]"
+labels: ["enhancement", "activity-management"]
+projects: ["adrianarmijos/1"]
+assignees:
+  - copilot
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 📚 New Activity Request
+        Use this form to request adding a new extracurricular activity or club to the Mergington High School system.
+        
+        **Important:** Fill out all required fields with specific details so the coding assistant can implement your request without needing additional information.
+
+  - type: input
+    id: activity_name
+    attributes:
+      label: Activity/Club Name
+      description: What is the name of the new activity or club?
+      placeholder: "e.g., Robotics Club, Spanish Club, Track and Field"
+    validations:
+      required: true
+
+  - type: textarea
+    id: activity_description
+    attributes:
+      label: Activity Description
+      description: Provide a detailed description of what this activity involves
+      placeholder: "e.g., Students will learn robotics programming, build robots, and compete in regional competitions"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: activity_category
+    attributes:
+      label: Activity Category
+      description: Which category best fits this activity?
+      options:
+        - Sports
+        - Arts
+        - Academic
+        - Technology
+        - Community
+        - Other
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: meeting_days
+    attributes:
+      label: Meeting Days
+      description: Which days of the week will this activity meet?
+      options:
+        - label: Monday
+        - label: Tuesday
+        - label: Wednesday
+        - label: Thursday
+        - label: Friday
+        - label: Saturday
+        - label: Sunday
+
+  - type: input
+    id: start_time
+    attributes:
+      label: Start Time
+      description: What time does the activity start? (Use 24-hour format)
+      placeholder: "e.g., 15:30 for 3:30 PM"
+    validations:
+      required: true
+
+  - type: input
+    id: end_time
+    attributes:
+      label: End Time
+      description: What time does the activity end? (Use 24-hour format)
+      placeholder: "e.g., 17:00 for 5:00 PM"
+    validations:
+      required: true
+
+  - type: input
+    id: max_participants
+    attributes:
+      label: Maximum Participants
+      description: What is the maximum number of students that can participate?
+      placeholder: "e.g., 20"
+    validations:
+      required: true
+
+  - type: input
+    id: teacher_sponsor
+    attributes:
+      label: Teacher Sponsor
+      description: Which teacher will sponsor/supervise this activity?
+      placeholder: "e.g., Ms. Rodriguez, Mr. Chen"
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional_requirements
+    attributes:
+      label: Additional Requirements or Notes
+      description: Any special requirements, equipment needs, or other important information?
+      placeholder: "e.g., Requires computer lab access, Need art supplies budget, Parent permission forms required"
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ## ✅ Acceptance Criteria
+        When this request is completed:
+        - [ ] New activity appears in the activities list on the website
+        - [ ] Students can sign up for the activity
+        - [ ] Activity shows correct schedule information
+        - [ ] Participant limit is enforced
+        - [ ] Activity appears in the correct category filter
+
+        ## 💡 Implementation Hints
+        - Add new activity entry to `src/backend/database.py` in the `initial_activities` dictionary
+        - Ensure schedule format matches existing activities
+        - Test that the activity appears correctly on the website
+        - Verify signup functionality works properly

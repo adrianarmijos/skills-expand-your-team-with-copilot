@@ -1,0 +1,130 @@
+name: Report a Bug
+description: Report something that isn't working correctly in the activity management system
+title: "[BUG] Brief description of the problem"
+labels: ["bug"]
+projects: ["adrianarmijos/1"]
+assignees:
+  - copilot
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🐛 Bug Report
+        Use this form to report problems with the activity management system.
+        
+        **Please provide as much detail as possible** to help identify and fix the issue quickly.
+
+  - type: dropdown
+    id: bug_area
+    attributes:
+      label: What part of the system has the problem?
+      description: Select the area where you noticed the bug
+      options:
+        - Student sign-up process
+        - Activity listing/display
+        - Teacher login
+        - Student registration management
+        - Activity filtering/search
+        - Schedule display
+        - Participant limits
+        - Website loading/performance
+        - Other (specify below)
+    validations:
+      required: true
+
+  - type: textarea
+    id: bug_description
+    attributes:
+      label: What is happening?
+      description: Describe the problem in detail
+      placeholder: "e.g., When I try to sign up a student for Chess Club, I get an error message saying 'Activity not found' even though Chess Club appears in the list"
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: What should happen instead?
+      description: Describe what you expected to happen
+      placeholder: "e.g., The student should be successfully registered for Chess Club and appear in the participant list"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: Provide step-by-step instructions to recreate the problem
+      placeholder: |
+        1. Go to the activities page
+        2. Click on Chess Club
+        3. Enter student email address
+        4. Click 'Register'
+        5. See error message
+    validations:
+      required: true
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: How often does this happen?
+      description: How frequently do you encounter this problem?
+      options:
+        - Always (every time)
+        - Often (most of the time)
+        - Sometimes (occasionally)
+        - Rarely (once or twice)
+        - Just once
+    validations:
+      required: true
+
+  - type: dropdown
+    id: impact
+    attributes:
+      label: How does this affect your work?
+      description: What is the impact of this problem?
+      options:
+        - Critical - Prevents all work
+        - High - Significantly impacts daily tasks
+        - Medium - Causes inconvenience but has workarounds
+        - Low - Minor annoyance
+    validations:
+      required: true
+
+  - type: input
+    id: error_message
+    attributes:
+      label: Error Message (if any)
+      description: Copy the exact error message you see
+      placeholder: "e.g., Error 404: Activity not found"
+
+  - type: input
+    id: browser_info
+    attributes:
+      label: Browser Information
+      description: What browser are you using?
+      placeholder: "e.g., Chrome 120, Firefox 121, Safari 17"
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional Information
+      description: Anything else that might help understand the problem?
+      placeholder: "e.g., This started happening after the last update, Only affects certain activities, Works fine on other computers"
+
+  - type: markdown
+    attributes:
+      value: |
+        ## ✅ Acceptance Criteria
+        When this bug is fixed:
+        - [ ] The reported problem no longer occurs
+        - [ ] The system behaves as expected
+        - [ ] No new problems are introduced
+        - [ ] The fix is tested with the provided reproduction steps
+
+        ## 💡 Investigation Hints
+        - Check browser developer console for JavaScript errors
+        - Verify database connections and data integrity
+        - Test with different browsers if needed
+        - Review recent code changes that might have caused the issue
+        - Check server logs for error messages
