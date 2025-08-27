@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🆘 Need Help Using the System?
+    url: https://github.com/adrianarmijos/skills-expand-your-team-with-copilot/discussions
+    about: Ask questions about how to use the activity management system
+  - name: 📚 Documentation
+    url: https://github.com/adrianarmijos/skills-expand-your-team-with-copilot/blob/main/docs/how-to-develop.md
+    about: Read the system documentation and developer guide
+  - name: 🎯 Emergency Issues
+    url: mailto:principal@mergington.edu
+    about: For urgent issues that need immediate attention, contact the principal directly

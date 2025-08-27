@@ -1,0 +1,145 @@
+name: Request New Feature
+description: Suggest a new feature or improvement for the activity management system
+title: "[FEATURE] Brief description of the requested feature"
+labels: ["enhancement", "feature-request"]
+projects: ["adrianarmijos/1"]
+assignees:
+  - copilot
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 💡 Feature Request
+        Use this form to suggest new features or improvements for the activity management system.
+        
+        **Be specific about what you need** and how it would help teachers and students.
+
+  - type: input
+    id: feature_title
+    attributes:
+      label: Feature Name
+      description: What would you call this new feature?
+      placeholder: "e.g., Automatic Email Notifications, Activity Calendar View, Student Waitlist"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: feature_category
+    attributes:
+      label: Feature Category
+      description: What type of feature is this?
+      options:
+        - User Interface Improvement
+        - Communication/Notifications
+        - Reporting/Analytics
+        - Student Management
+        - Teacher Tools
+        - System Administration
+        - Performance/Speed
+        - Security/Privacy
+        - Mobile/Accessibility
+        - Integration with other systems
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem_description
+    attributes:
+      label: What problem does this solve?
+      description: Describe the current challenge or limitation this feature would address
+      placeholder: "e.g., Teachers currently have to manually email parents when activities are cancelled, which is time-consuming and sometimes students are missed"
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed_solution
+    attributes:
+      label: Proposed Solution
+      description: Describe how you envision this feature working
+      placeholder: "e.g., Add an 'Email All Participants' button to each activity that automatically sends notifications to all enrolled students and their parents"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: user_type
+    attributes:
+      label: Who would primarily use this feature?
+      description: Select the main users who would benefit from this feature
+      options:
+        - Teachers only
+        - Students only
+        - Both teachers and students
+        - School administrators
+        - Parents/guardians
+        - All users
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: How important is this feature?
+      description: What priority level would you assign to this request?
+      options:
+        - Critical - Essential for daily operations
+        - High - Would significantly improve workflow
+        - Medium - Nice to have, would be helpful
+        - Low - Minor improvement
+    validations:
+      required: true
+
+  - type: textarea
+    id: success_criteria
+    attributes:
+      label: How would you know this feature is working well?
+      description: Describe what success looks like for this feature
+      placeholder: "e.g., Teachers can send notifications with 2 clicks, All enrolled students receive emails within 5 minutes, Email delivery is confirmed"
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternative_solutions
+    attributes:
+      label: Alternative Solutions Considered
+      description: Have you thought of other ways to solve this problem?
+      placeholder: "e.g., Using external email tools, Manual phone calls, Paper notices"
+
+  - type: textarea
+    id: examples_references
+    attributes:
+      label: Examples or References
+      description: Are there similar features in other systems you've seen?
+      placeholder: "e.g., Like the notification system in Google Classroom, Similar to what we use for school announcements"
+
+  - type: checkboxes
+    id: complexity_considerations
+    attributes:
+      label: Implementation Considerations
+      description: Select any factors that might affect implementation
+      options:
+        - label: Requires database changes
+        - label: Needs new user interface elements
+        - label: Requires email/messaging integration
+        - label: May need security/privacy considerations
+        - label: Could affect system performance
+        - label: Might need mobile device support
+        - label: Requires user training/documentation
+
+  - type: markdown
+    attributes:
+      value: |
+        ## ✅ Acceptance Criteria
+        When this feature is implemented:
+        - [ ] Feature works as described in the proposed solution
+        - [ ] User interface is intuitive and easy to use
+        - [ ] Feature doesn't break existing functionality
+        - [ ] Performance impact is minimal
+        - [ ] Feature is tested and reliable
+
+        ## 💡 Implementation Hints
+        - Consider existing code patterns and architecture
+        - Ensure the feature fits with the current user interface design
+        - Think about error handling and edge cases
+        - Plan for user feedback and potential iteration
+        - Document any new functionality for users

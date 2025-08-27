@@ -1,0 +1,150 @@
+name: Manage Student Registrations
+description: Request changes to student registrations (add, remove, transfer students)
+title: "[STUDENT MGMT] Student registration request"
+labels: ["student-management"]
+projects: ["adrianarmijos/1"]
+assignees:
+  - copilot
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 👥 Student Registration Management
+        Use this form to request changes to student registrations in activities.
+        
+        **Important:** Provide complete student information and specify exactly what changes are needed.
+
+  - type: dropdown
+    id: request_type
+    attributes:
+      label: Type of Request
+      description: What type of student registration change do you need?
+      options:
+        - Register student for activity
+        - Remove student from activity
+        - Transfer student between activities
+        - Update student information
+        - Bulk registration (multiple students)
+        - Other (specify below)
+    validations:
+      required: true
+
+  - type: input
+    id: student_email
+    attributes:
+      label: Student Email Address
+      description: Email address of the student (for single student requests)
+      placeholder: "e.g., student@mergington.edu"
+
+  - type: textarea
+    id: student_emails_bulk
+    attributes:
+      label: Student Email Addresses (for bulk requests)
+      description: List email addresses, one per line (for multiple student requests)
+      placeholder: |
+        student1@mergington.edu
+        student2@mergington.edu
+        student3@mergington.edu
+
+  - type: dropdown
+    id: target_activity
+    attributes:
+      label: Target Activity
+      description: Which activity is this request for?
+      options:
+        - Chess Club
+        - Programming Class
+        - Art Club
+        - Drama Club
+        - Math Club
+        - Debate Team
+        - Weekend Robotics Workshop
+        - Science Olympiad
+        - Sunday Chess Tournament
+        - Other (specify in notes)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: source_activity
+    attributes:
+      label: Source Activity (for transfers only)
+      description: Which activity is the student currently in? (Only needed for transfers)
+      options:
+        - Chess Club
+        - Programming Class
+        - Art Club
+        - Drama Club
+        - Math Club
+        - Debate Team
+        - Weekend Robotics Workshop
+        - Science Olympiad
+        - Sunday Chess Tournament
+        - Other (specify in notes)
+
+  - type: textarea
+    id: reason_for_change
+    attributes:
+      label: Reason for Request
+      description: Why is this registration change needed?
+      placeholder: "e.g., Student expressed interest in joining, Schedule conflict resolved, Parent request, Student wants to try different activity"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: Urgency Level
+      description: How soon does this need to be completed?
+      options:
+        - Low - Within 2 weeks
+        - Medium - Within 1 week
+        - High - Within 2-3 days
+        - Critical - Today
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: notifications_needed
+    attributes:
+      label: Notifications Required
+      description: Who should be notified about this change?
+      options:
+        - label: Student
+        - label: Student's parents/guardians
+        - label: Activity sponsor/teacher
+        - label: School administration
+        - label: Other teachers
+
+  - type: textarea
+    id: special_considerations
+    attributes:
+      label: Special Considerations
+      description: Any special circumstances or requirements for this request?
+      placeholder: "e.g., Student has accommodation needs, Late registration fee waiver requested, Prerequisite requirements met"
+
+  - type: textarea
+    id: additional_notes
+    attributes:
+      label: Additional Notes
+      description: Any other important information about this request?
+      placeholder: "e.g., Student previously participated in this activity, Parent has already paid fees, Equipment or materials needed"
+
+  - type: markdown
+    attributes:
+      value: |
+        ## ✅ Acceptance Criteria
+        When this request is completed:
+        - [ ] Student registration changes are reflected in the system
+        - [ ] Student appears in correct activity participant lists
+        - [ ] Capacity limits are respected and enforced
+        - [ ] Appropriate notifications are sent if requested
+        - [ ] Any schedule conflicts are identified and resolved
+
+        ## 💡 Implementation Hints
+        - Use the existing signup/unregister API endpoints
+        - Verify student email format matches school domain
+        - Check activity capacity before adding students
+        - Update participant lists in database
+        - Test that changes appear correctly on the website
+        - Ensure teacher authentication is maintained for the operations

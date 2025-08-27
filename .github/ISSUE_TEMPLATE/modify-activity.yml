@@ -1,0 +1,130 @@
+name: Modify Existing Activity
+description: Request changes to an existing activity's details (schedule, description, capacity, etc.)
+title: "[MODIFY ACTIVITY] Update [Activity Name]"
+labels: ["enhancement", "activity-management"]
+projects: ["adrianarmijos/1"]
+assignees:
+  - copilot
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## ✏️ Activity Modification Request
+        Use this form to request changes to an existing extracurricular activity.
+        
+        **Important:** Be specific about what needs to change so the coding assistant can implement your request accurately.
+
+  - type: dropdown
+    id: existing_activity
+    attributes:
+      label: Which Activity to Modify
+      description: Select the activity you want to modify
+      options:
+        - Chess Club
+        - Programming Class
+        - Art Club
+        - Drama Club
+        - Math Club
+        - Debate Team
+        - Weekend Robotics Workshop
+        - Science Olympiad
+        - Sunday Chess Tournament
+        - Other (specify in additional notes)
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: what_to_change
+    attributes:
+      label: What needs to be changed?
+      description: Select all that apply
+      options:
+        - label: Activity name
+        - label: Description
+        - label: Schedule (days/times)
+        - label: Maximum participants
+        - label: Category/type
+        - label: Other (specify below)
+
+  - type: input
+    id: new_name
+    attributes:
+      label: New Activity Name
+      description: Only fill this if changing the activity name
+      placeholder: "e.g., Advanced Chess Club"
+
+  - type: textarea
+    id: new_description
+    attributes:
+      label: New Description
+      description: Only fill this if changing the description
+      placeholder: "e.g., Advanced chess strategies and tournament preparation for experienced players"
+
+  - type: checkboxes
+    id: new_meeting_days
+    attributes:
+      label: New Meeting Days
+      description: Only select if changing the schedule
+      options:
+        - label: Monday
+        - label: Tuesday
+        - label: Wednesday
+        - label: Thursday
+        - label: Friday
+        - label: Saturday
+        - label: Sunday
+
+  - type: input
+    id: new_start_time
+    attributes:
+      label: New Start Time
+      description: Only fill if changing start time (Use 24-hour format)
+      placeholder: "e.g., 15:30 for 3:30 PM"
+
+  - type: input
+    id: new_end_time
+    attributes:
+      label: New End Time
+      description: Only fill if changing end time (Use 24-hour format)
+      placeholder: "e.g., 17:00 for 5:00 PM"
+
+  - type: input
+    id: new_max_participants
+    attributes:
+      label: New Maximum Participants
+      description: Only fill if changing participant limit
+      placeholder: "e.g., 25"
+
+  - type: textarea
+    id: reason_for_change
+    attributes:
+      label: Reason for Change
+      description: Why is this change needed?
+      placeholder: "e.g., Room capacity increased, Teacher availability changed, Student demand increased"
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional_notes
+    attributes:
+      label: Additional Notes
+      description: Any other important information about this change?
+      placeholder: "e.g., Need to notify currently enrolled students, Change takes effect next semester"
+
+  - type: markdown
+    attributes:
+      value: |
+        ## ✅ Acceptance Criteria
+        When this request is completed:
+        - [ ] Activity information is updated in the system
+        - [ ] Changes are visible on the website
+        - [ ] Existing student registrations are preserved (unless specified otherwise)
+        - [ ] New schedule/capacity limits are enforced
+        - [ ] Activity still functions correctly after changes
+
+        ## 💡 Implementation Hints
+        - Update the activity entry in `src/backend/database.py`
+        - Ensure schedule format is consistent with other activities
+        - Test that changes appear correctly on the website
+        - Verify signup functionality still works
+        - Consider impact on existing student registrations

@@ -1,0 +1,116 @@
+name: Remove Activity/Club
+description: Request to remove or cancel an existing activity from the system
+title: "[REMOVE ACTIVITY] Remove [Activity Name]"
+labels: ["enhancement", "activity-management"]
+projects: ["adrianarmijos/1"]
+assignees:
+  - copilot
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🗑️ Activity Removal Request
+        Use this form to request removal of an existing extracurricular activity.
+        
+        **Warning:** This will remove the activity from the system and may affect enrolled students.
+
+  - type: dropdown
+    id: activity_to_remove
+    attributes:
+      label: Which Activity to Remove
+      description: Select the activity you want to remove
+      options:
+        - Chess Club
+        - Programming Class
+        - Art Club
+        - Drama Club
+        - Math Club
+        - Debate Team
+        - Weekend Robotics Workshop
+        - Science Olympiad
+        - Sunday Chess Tournament
+        - Other (specify in reason below)
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason_for_removal
+    attributes:
+      label: Reason for Removal
+      description: Why does this activity need to be removed?
+      placeholder: "e.g., Teacher no longer available, Low enrollment, Budget constraints, Room no longer available"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: Urgency Level
+      description: How urgent is this removal?
+      options:
+        - Low - End of semester
+        - Medium - End of month
+        - High - End of week
+        - Critical - Immediate
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: current_participants
+    attributes:
+      label: Current Participants
+      description: What should happen to currently enrolled students?
+      options:
+        - label: Notify all enrolled students via email
+        - label: Remove students from activity roster
+        - label: Help students find alternative activities
+        - label: Provide refunds if applicable
+
+  - type: textarea
+    id: student_communication
+    attributes:
+      label: Student Communication Plan
+      description: How will you inform affected students about the removal?
+      placeholder: "e.g., Send email notification one week before removal, Post announcement on school website, Contact parents directly"
+    validations:
+      required: true
+
+  - type: input
+    id: effective_date
+    attributes:
+      label: Effective Date
+      description: When should this activity be removed? (YYYY-MM-DD format)
+      placeholder: "e.g., 2024-01-15"
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional_notes
+    attributes:
+      label: Additional Notes
+      description: Any other important information about this removal?
+      placeholder: "e.g., Equipment needs to be returned, Room will be available for other activities, Replacement activity planned"
+
+  - type: markdown
+    attributes:
+      value: |
+        ## ✅ Acceptance Criteria
+        When this request is completed:
+        - [ ] Activity is removed from the activities list
+        - [ ] Students can no longer sign up for this activity
+        - [ ] Existing student registrations are handled appropriately
+        - [ ] Activity no longer appears in website filters
+        - [ ] System documentation is updated if needed
+
+        ## ⚠️ Important Considerations
+        - **Data Backup**: Consider backing up student enrollment data before removal
+        - **Student Impact**: Ensure all enrolled students are properly notified
+        - **Academic Records**: Verify if participation records need to be preserved
+        - **Resources**: Handle any equipment, room reservations, or budget items
+
+        ## 💡 Implementation Hints
+        - Remove activity entry from `src/backend/database.py`
+        - Consider adding a "deleted" or "inactive" status instead of complete removal
+        - Verify no references to this activity exist in other parts of the code
+        - Test that the website functions correctly after removal
+        - Document the removal in system logs
